@@ -8,10 +8,10 @@ import (
 )
 
 type Block struct {
-	Data   string `json:"data"`
-	Hash     string `json:"hash"`
+	Data     string `json:"data"` 
+	Hash     string `json:"hash"`   
 	PrevHash string `json:"prevHash,omitempty"`
-	Height int `json:"height"`
+	Height   int    `json:"height"` 
 }
 
 type blockchain struct {

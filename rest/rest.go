@@ -23,7 +23,7 @@ func (u url) MarshalText() ([]byte, error){
 }
 
 type urlDescription struct{
-	URL url `json:"url"`
+	URL url `json:"url"` 
 	Method string `json:"method"`
 	Description string `json:"description"`
 	Payload string `json:"payload,omitempty"`
