@@ -8,7 +8,7 @@ import (
 )
 
 type Block struct {
-	Data     string `json:"data"`
+	Data   string `json:"data"`
 	Hash     string `json:"hash"`
 	PrevHash string `json:"prevHash,omitempty"`
 	Height int `json:"height"`
