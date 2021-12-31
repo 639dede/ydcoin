@@ -1,9 +1,9 @@
 package main
 
-import "github.com/639dede/ydcoin/cli"
+import "github.com/639dede/ydcoin/blockchain"
 
 
 
 func main(){
-	cli.Start()
+	blockchain.Blockchain()
 }
