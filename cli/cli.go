@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"runtime"
 
 	explorer "github.com/639dede/ydcoin/explorer/templates"
 	"github.com/639dede/ydcoin/rest"
@@ -14,7 +15,7 @@ func usage(){
 	fmt.Printf("Please use the following flags:\n\n")
 	fmt.Printf("-port1 : Set the PORT of the rest API server\n")
 	fmt.Printf("-port2 : Set the PORT of the html server\n")
-	os.Exit(0)
+	runtime.Goexit()
 }
 
 func Start(){
