@@ -1,7 +1,6 @@
 package blockchain
 
 import (
-	"fmt"
 	"sync"
 
 	"github.com/639dede/ydcoin/db"
@@ -58,6 +57,5 @@ func Blockchain() *blockchain {
 			}
 		})
 	}
-	fmt.Println(b.NewestHash)
 	return b
 }
