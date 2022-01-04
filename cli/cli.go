@@ -10,7 +10,7 @@ import (
 	"github.com/639dede/ydcoin/rest"
 )
 
-func usage(){
+func usage() {
 	fmt.Printf("Welcome to ydcoin\n\n")
 	fmt.Printf("Please use the following flags:\n\n")
 	fmt.Printf("-port1 : Set the PORT of the rest API server\n")
@@ -18,8 +18,8 @@ func usage(){
 	runtime.Goexit()
 }
 
-func Start(){
-	if len(os.Args) < 2{
+func Start() {
+	if len(os.Args) < 2 {
 		usage()
 	}
 	port1 := flag.Int("port1", 3000, "Set port of the rest API server")

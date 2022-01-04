@@ -10,26 +10,25 @@ import (
 )
 
 type Block struct {
-	Data     string `json:"data"` 
-	Hash     string `json:"hash"`   
+	Data     string `json:"data"`
+	Hash     string `json:"hash"`
 	PrevHash string `json:"prevHash,omitempty"`
-	Height   int    `json:"height"` 
+	Height   int    `json:"height"`
 }
 
-func (b *Block) persist(){
+func (b *Block) persist() {
 	db.SaveBlock(b.Hash, utils.ToBytes(b))
 }
 
 var ErrNotFound = errors.New("block not found")
 
-
-func(b*Block)restore(data []byte){
+func (b *Block) restore(data []byte) {
 	utils.FromBytes(b, data)
 }
 
-func FindBlock(hash string) (*Block, error){
+func FindBlock(hash string) (*Block, error) {
 	blockBytes := db.Block(hash)
-	if blockBytes == nil{
+	if blockBytes == nil {
 		return nil, ErrNotFound
 	}
 	block := &Block{}
@@ -37,15 +36,15 @@ func FindBlock(hash string) (*Block, error){
 	return block, nil
 }
 
-func createBlock(data string, prevHash string, height int) *Block{
+func createBlock(data string, prevHash string, height int) *Block {
 	block := Block{
-		Data: data,
-		Hash: "",
+		Data:     data,
+		Hash:     "",
 		PrevHash: prevHash,
-		Height: height,
+		Height:   height,
 	}
-	payload := block.Data+block.PrevHash+fmt.Sprint(block.Height)
-	block.Hash=fmt.Sprintf("%x", sha256.Sum256([]byte(payload)))
+	payload := block.Data + block.PrevHash + fmt.Sprint(block.Height)
+	block.Hash = fmt.Sprintf("%x", sha256.Sum256([]byte(payload)))
 	block.persist()
 	return &block
 }
