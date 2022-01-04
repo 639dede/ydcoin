@@ -49,7 +49,7 @@ func SaveBlock(hash string, data []byte){
 
 
 
-func SaveBlockchain(data []byte){
+func SaveCheckpoint(data []byte){
 	err := DB().Update(func(t *bolt.Tx) error {
 		bucket:=t.Bucket([]byte(dataBucket))
 		err := bucket.Put([]byte(checkpoint), data)
