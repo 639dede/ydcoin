@@ -2,13 +2,13 @@ package blockchain
 
 import (
 	"errors"
+	"fmt"
 	"strings"
+	"time"
 
 	"github.com/639dede/ydcoin/db"
 	"github.com/639dede/ydcoin/utils"
 )
-
-const difficulty int = 2
 
 type Block struct {
 	Data       string `json:"data"`
@@ -17,6 +17,7 @@ type Block struct {
 	Height     int    `json:"height"`
 	Difficulty int    `json:"difficulty"`
 	Nonce      int    `json:"nonce"`
+	Timestamp  int    `json:"timestamp"`
 }
 
 func (b *Block) persist() {
@@ -42,7 +43,9 @@ func FindBlock(hash string) (*Block, error) {
 func (b *Block) mine() {
 	target := strings.Repeat("0", b.Difficulty)
 	for {
+		b.Timestamp = int(time.Now().Unix())
 		hash := utils.Hash(b)
+		fmt.Printf("\n\nTarget : %s\nHash : %s\nNonce : %d\n\n", target, hash, b.Nonce)
 		if strings.HasPrefix(hash, target) {
 			b.Hash = hash
 			break
@@ -58,7 +61,7 @@ func createBlock(data string, prevHash string, height int) *Block {
 		Hash:       "",
 		PrevHash:   prevHash,
 		Height:     height,
-		Difficulty: difficulty,
+		Difficulty: Blockchain().difficulty(),
 		Nonce:      0,
 	}
 	block.mine()
