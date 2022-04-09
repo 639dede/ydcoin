@@ -22,7 +22,7 @@ func Start() {
 	if len(os.Args) < 2 {
 		usage()
 	}
-	port1 := flag.Int("port1", 3000, "Set port of the rest API server")
+	port1 := flag.Int("port1", 4000, "Set port of the rest API server")
 
 	port2 := flag.Int("port2", 5000, "Set port of the html server")
 
