@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/639dede/ydcoin/cli"
+	"github.com/639dede/ydcoin/wallet"
 )
 
 func main() {
-	cli.Start()
+	wallet.Wallet()
 }
